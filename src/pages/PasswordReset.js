@@ -12,7 +12,7 @@ import Alert from '@material-ui/lab/Alert';
 
 import { FirebaseContext } from '../context/firebaseContext';
 
-const Login = () => {
+const PasswordReset = () => {
     const { auth } = useContext(FirebaseContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
@@ -85,4 +85,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default PasswordReset;
