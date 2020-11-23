@@ -41,4 +41,6 @@
         margin: 5rem auto;
     }
 
-
+.MuiTypography-body2 {
+    font-size: 0.7rem !important;
+}
