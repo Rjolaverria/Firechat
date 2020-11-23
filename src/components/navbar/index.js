@@ -37,6 +37,11 @@ const Navbar = () => {
         setAnchorEl(null);
     };
 
+    const handleSignOut = () => {
+        auth.signOut();
+        handleClose();
+    };
+
     return (
         <div className={classes.root}>
             <AppBar position='fixed' color='secondary'>
@@ -55,7 +60,7 @@ const Navbar = () => {
                                 color='inherit'
                             >
                                 <Avatar
-                                    alt='Remy Sharp'
+                                    alt={auth.currentUser.displayName}
                                     src={auth.currentUser.photoURL}
                                 />
                             </IconButton>
@@ -65,7 +70,7 @@ const Navbar = () => {
                                     anchorEl={anchorEl}
                                     anchorOrigin={{
                                         vertical: 'top',
-                                        horizontal: 'right',
+                                        horizontal: 'left',
                                     }}
                                     keepMounted
                                     transformOrigin={{
@@ -75,7 +80,8 @@ const Navbar = () => {
                                     open={open}
                                     onClose={handleClose}
                                 >
-                                    <MenuItem onClick={() => auth.signOut()}>
+                                    <MenuItem
+                                        onClick={handleSignOut}>
                                         Sign out
                                     </MenuItem>
                                 </Menu>

@@ -45,7 +45,7 @@ const Register = () => {
             <CssBaseline />
             <div className='auth-form-container'>
                 <Typography component='h1' variant='h3'>
-                    Sign up
+                    Register
                 </Typography>
                 {error && (
                     <Alert className='alert' severity='error'>
@@ -102,13 +102,9 @@ const Register = () => {
                     >
                         Sign Up
                     </Button>
-                    <Grid container justify='flex-end'>
-                        <Grid item>
-                            <Link component={A} to='/login' variant='body2'>
-                                Already have an account? Sign in
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    <Link component={A} to='/login' variant='body2'>
+                        Already have an account? Sign in
+                    </Link>
                 </form>
             </div>
         </Container>

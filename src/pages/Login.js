@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link as A, Redirect, useHistory } from 'react-router-dom';
+import { Link as A, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -13,7 +13,6 @@ import Container from '@material-ui/core/Container';
 import { FirebaseContext } from '../context/firebaseContext';
 
 const Login = () => {
-    const history = useHistory();
     const { firebase, auth } = useContext(FirebaseContext);
     const [error, setError] = useState('');
     const [email, setEmail] = useState('');
@@ -21,23 +20,25 @@ const Login = () => {
 
     const signIn = (e) => {
         e.preventDefault();
-        auth.signInWithEmailAndPassword(email, password)
-            .then(() => {
-                history.push('/');
-            })
-            .catch((error) => {
-                setError(error.message);
-                setTimeout(() => setError(''), 5000);
-            });
+        auth.signInWithEmailAndPassword(email, password).catch((error) => {
+            setError(error.message);
+            setTimeout(() => setError(''), 5000);
+        });
     };
     const googleSignIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithPopup(provider);
+        auth.signInWithPopup(provider).catch((error) => {
+            setError(error.message);
+            setTimeout(() => setError(''), 5000);
+        });;
     };
 
     const fbSignIn = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
-        auth.signInWithPopup(provider);
+        auth.signInWithPopup(provider).catch((error) => {
+            setError(error.message);
+            setTimeout(() => setError(''), 5000);
+        });;
     };
 
     if (auth.currentUser) {
@@ -48,7 +49,7 @@ const Login = () => {
             <CssBaseline />
             <div className='auth-form-container'>
                 <Typography component='h1' variant='h3'>
-                    Sign in
+                    Sign In
                 </Typography>
                 {error && (
                     <Alert className='alert' severity='error'>
@@ -107,7 +108,11 @@ const Login = () => {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href='#' variant='body2'>
+                            <Link
+                                component={A}
+                                to='/resetpassword'
+                                variant='body2'
+                            >
                                 Forgot password?
                             </Link>
                         </Grid>

@@ -25,7 +25,11 @@ const Message = ({
             </ListItemAvatar>
             <ListItemText
                 primary={text}
-                secondary={`${date} - @${displayName}`}
+                secondary={
+                    user.uid === uid
+                        ? `${date} - @${displayName}`
+                        : `@${displayName} - ${date}`
+                }
                 style={
                     user.uid === uid
                         ? {
