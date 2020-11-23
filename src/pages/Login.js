@@ -1,14 +1,16 @@
 import { useContext, useState } from 'react';
 import { Link as A, Redirect } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Divider from '@material-ui/core/Divider';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import {
+    Button,
+    CssBaseline,
+    TextField,
+    Divider,
+    Link,
+    Grid,
+    Typography,
+    Container,
+} from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import Container from '@material-ui/core/Container';
 
 import { FirebaseContext } from '../context/firebaseContext';
 
