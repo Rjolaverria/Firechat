@@ -8,12 +8,13 @@ const MessageForm = ({ messages, user }) => {
 
     const sendMessage = async (e) => {
         e.preventDefault();
-        const { uid, photoURL } = user;
+        const { uid, photoURL, displayName } = user;
 
         await messages.add({
             text,
             uid,
             photoURL,
+            displayName,
             date: new Date().toISOString(),
         });
         setText('');

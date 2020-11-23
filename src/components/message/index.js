@@ -5,7 +5,12 @@ import Avatar from '@material-ui/core/Avatar';
 
 import moment from 'moment';
 
-const Message = ({ user, data: { text, date, uid, photoURL } }) => {
+const Message = ({
+    user,
+    data: { text, date, uid, photoURL, displayName },
+}) => {
+    displayName = displayName && displayName.split(' ')[0];
+    date = moment(date).fromNow();
     return (
         <ListItem
             alignItems='flex-start'
@@ -20,7 +25,7 @@ const Message = ({ user, data: { text, date, uid, photoURL } }) => {
             </ListItemAvatar>
             <ListItemText
                 primary={text}
-                secondary={moment(date).fromNow()}
+                secondary={`${date} - @${displayName}`}
                 style={
                     user.uid === uid
                         ? {
