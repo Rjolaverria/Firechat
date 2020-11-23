@@ -1,10 +1,12 @@
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     AppBar,
     Toolbar,
     Typography,
     IconButton,
+    Button,
     Menu,
     MenuItem,
     Avatar,
@@ -45,6 +47,53 @@ const Navbar = () => {
         handleClose();
     };
 
+    const userNav = auth.currentUser && (
+        <div>
+            <IconButton
+                aria-label='account of current user'
+                aria-controls='menu-appbar'
+                aria-haspopup='true'
+                onClick={handleMenu}
+                color='inherit'
+            >
+                <Avatar
+                    alt={auth.currentUser.displayName}
+                    src={auth.currentUser.photoURL}
+                />
+            </IconButton>
+            {auth.currentUser && (
+                <Menu
+                    id='menu-appbar'
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    open={open}
+                    onClose={handleClose}
+                >
+                    <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
+                </Menu>
+            )}
+        </div>
+    );
+
+    const guestNav = (
+        <div>
+            <Button component={Link} to='/login'>
+                Login
+            </Button>
+            <Button component={Link} to='/register'>
+                Sign Up
+            </Button>
+        </div>
+    );
+
     return (
         <div className={classes.root}>
             <AppBar position='fixed' className='navbar'>
@@ -54,43 +103,7 @@ const Navbar = () => {
                             <WhatshotIcon color='secondary' />
                             FireChat
                         </Typography>
-                        {auth.currentUser && (
-                            <div>
-                                <IconButton
-                                    aria-label='account of current user'
-                                    aria-controls='menu-appbar'
-                                    aria-haspopup='true'
-                                    onClick={handleMenu}
-                                    color='inherit'
-                                >
-                                    <Avatar
-                                        alt={auth.currentUser.displayName}
-                                        src={auth.currentUser.photoURL}
-                                    />
-                                </IconButton>
-                                {auth.currentUser && (
-                                    <Menu
-                                        id='menu-appbar'
-                                        anchorEl={anchorEl}
-                                        anchorOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'left',
-                                        }}
-                                        keepMounted
-                                        transformOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        open={open}
-                                        onClose={handleClose}
-                                    >
-                                        <MenuItem onClick={handleSignOut}>
-                                            Sign out
-                                        </MenuItem>
-                                    </Menu>
-                                )}
-                            </div>
-                        )}
+                        {auth.currentUser ? userNav : guestNav}
                     </Toolbar>
                 </Container>
             </AppBar>
