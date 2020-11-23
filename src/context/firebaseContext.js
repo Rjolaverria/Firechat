@@ -5,11 +5,7 @@ import 'firebase/auth';
 import 'firebase/analytics';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-let firebaseConfig;
-if (process.env.NODE_ENV === 'development') {
-    firebaseConfig = require('../firebaseConfig').default;
-} else if (process.env.NODE_ENV === 'production') {
-    firebaseConfig = {
+firebase.initializeApp({
         apiKey: process.env.REACT_APP_API_KEY,
         authDomain: process.env.REACT_APP_AUTH_DOMAIN,
         databaseURL: process.env.REACT_APP_DATABASE_URL,
@@ -18,10 +14,7 @@ if (process.env.NODE_ENV === 'development') {
         messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
         appId: process.env.REACT_APP_APP_ID,
         measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-    };
-}
-
-firebase.initializeApp(firebaseConfig);
+    });
 firebase.analytics();
 
 const auth = firebase.auth();
