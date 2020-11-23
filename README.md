@@ -1,4 +1,4 @@
-# CutHub
+# FireChat
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 
@@ -6,7 +6,7 @@
 
 ## About
 
-A chat app created with React, Firebaseand and Material UI.
+A chat app created with React, Firebase and Material UI.
 
 ## Author
 
