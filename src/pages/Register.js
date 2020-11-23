@@ -44,7 +44,7 @@ const Register = () => {
         <Container component='main' maxWidth='xs'>
             <CssBaseline />
             <div className='auth-form-container'>
-                <Typography component='h1' variant='h3'>
+                <Typography component='h1' variant='h4'>
                     Register
                 </Typography>
                 {error && (
@@ -94,6 +94,9 @@ const Register = () => {
                             />
                         </Grid>
                     </Grid>
+                    <Link component={A} to='/login' variant='body2'>
+                        Already have an account? Sign in
+                    </Link>
                     <Button
                         type='submit'
                         fullWidth
@@ -102,9 +105,6 @@ const Register = () => {
                     >
                         Sign Up
                     </Button>
-                    <Link component={A} to='/login' variant='body2'>
-                        Already have an account? Sign in
-                    </Link>
                 </form>
             </div>
         </Container>

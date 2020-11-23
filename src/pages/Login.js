@@ -48,7 +48,7 @@ const Login = () => {
         <Container component='main' maxWidth='xs'>
             <CssBaseline />
             <div className='auth-form-container'>
-                <Typography component='h1' variant='h3'>
+                <Typography component='h1' variant='h4'>
                     Sign In
                 </Typography>
                 {error && (
@@ -81,6 +81,22 @@ const Login = () => {
                         autoComplete='current-password'
                         onChange={({ target }) => setPassword(target.value)}
                     />
+                    <Grid container>
+                        <Grid item xs>
+                            <Link
+                                component={A}
+                                to='/resetpassword'
+                                variant='body2'
+                            >
+                                Forgot password?
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link component={A} to='/register' variant='body2'>
+                                Don't have an account? Sign Up
+                            </Link>
+                        </Grid>
+                    </Grid>
                     <Button
                         type='submit'
                         fullWidth
@@ -106,22 +122,6 @@ const Login = () => {
                     >
                         Sign In with Facebook
                     </Button>
-                    <Grid container>
-                        <Grid item xs>
-                            <Link
-                                component={A}
-                                to='/resetpassword'
-                                variant='body2'
-                            >
-                                Forgot password?
-                            </Link>
-                        </Grid>
-                        <Grid item>
-                            <Link component={A} to='/register' variant='body2'>
-                                Don't have an account? Sign Up
-                            </Link>
-                        </Grid>
-                    </Grid>
                 </form>
             </div>
         </Container>

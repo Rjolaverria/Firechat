@@ -16,11 +16,19 @@
 
 .auth-form > button {
     margin: 0.75rem 0;
+    border-radius: 50px;
+    padding: 0.75rem 0;
 }
 
 .auth-form > button:nth-of-type(2) {
     margin-bottom: 0rem;
 }
+.chatroom {
+        width: 100%;
+        max-width: 800px;
+        margin: 5rem auto;
+    }
+
 .facebook-button{
     background-color: #3b5998 !important;
     color: white !important;
@@ -31,16 +39,19 @@
     grid-template-columns: 3fr 1fr;
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
     padding: 0.5rem 1rem 0 1rem;
     background-color: #f7f7f7;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
-.chatroom {
-        width: 100%;
-        margin: 5rem auto;
-    }
 
 .MuiTypography-body2 {
     font-size: 0.7rem !important;
+}
+
+.navbar {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: black !important
 }

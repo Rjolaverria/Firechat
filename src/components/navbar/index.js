@@ -44,10 +44,10 @@ const Navbar = () => {
 
     return (
         <div className={classes.root}>
-            <AppBar position='fixed' color='secondary'>
+            <AppBar position='fixed' className='navbar'>
                 <Toolbar>
                     <Typography variant='h5' className={classes.title}>
-                        <WhatshotIcon />
+                        <WhatshotIcon color='secondary' />
                         FireChat
                     </Typography>
                     {auth.currentUser && (
@@ -80,8 +80,7 @@ const Navbar = () => {
                                     open={open}
                                     onClose={handleClose}
                                 >
-                                    <MenuItem
-                                        onClick={handleSignOut}>
+                                    <MenuItem onClick={handleSignOut}>
                                         Sign out
                                     </MenuItem>
                                 </Menu>
