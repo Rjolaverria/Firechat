@@ -9,7 +9,7 @@ const Message = ({
     user,
     data: { text, date, uid, photoURL, displayName },
 }) => {
-    displayName = displayName && displayName.split(' ')[0];
+    displayName = displayName && displayName.trim().split(' ')[0];
     date = moment(date).fromNow();
     return (
         <ListItem
